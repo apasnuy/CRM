@@ -45,6 +45,7 @@ public class AScrollList extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jPanel1);
 
         }// </editor-fold>
+    
     // Variables declaration - do not modify
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
