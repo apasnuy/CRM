@@ -1,5 +1,11 @@
 package crm;
 
+import java.awt.Dimension;
+import javax.swing.GroupLayout;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -10,13 +16,32 @@ package crm;
  *
  * @author kexital
  */
-public class AScrollList extends javax.swing.JPanel {
+public class AScrollList extends JScrollPane {
 
+//    needed for def constructor. Because when panel
+//    appears it must already show somethig to prevent user to be puzzled
+//    with empty list. Panel should show something. In this case Contacts of
+//    the first firm in firm list.
+
+// TODO condition: firmList must chose first firm record to anable this featre
+   
+    private String firmContacts[];      
+    private int recPerFirm;
+    
+    public JButton unnecessaryDemoButton2= new JButton("lists1");
+    public JButton unnecessaryDemoButton1= new JButton("lists2");
+    private ContactCard contactCard = new ContactCard();
+    
+    public JPanel panel;
+    public GroupLayout layout;
     /**
-     * Creates new form ContactCardList
+     * Creates new JPanel that represents Scrollable contacts list
      */
-    public AScrollList() {
-        initComponents();
+    public AScrollList (){
+        paint();
+    }
+    public AScrollList(String firmContact[], int recPerFirm) {
+        paint();
     }
 
     /**
@@ -26,28 +51,33 @@ public class AScrollList extends javax.swing.JPanel {
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">
-    private void initComponents() {
+    private void paint() {
 
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-
-        org.jdesktop.layout.GroupLayout jPanel1Layout = new org.jdesktop.layout.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 404, Short.MAX_VALUE)
+        panel = new javax.swing.JPanel();
+        layout = new GroupLayout(panel);
+        
+        panel.setLayout(layout);
+       
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(contactCard)
+                .addContainerGap(222, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)
-            .add(0, 366, Short.MAX_VALUE)
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(contactCard)
+                .addContainerGap(119, Short.MAX_VALUE))
         );
 
-        jScrollPane1.setViewportView(jPanel1);
-
-        }// </editor-fold>
+        this.setViewportView(panel);
+        this.setSize(new Dimension(800,800)); 
+        }
+    // </editor-fold>
     
-    // Variables declaration - do not modify
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    // End of variables declaration
+   
+    
+    
 }

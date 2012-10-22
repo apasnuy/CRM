@@ -6,6 +6,7 @@ package crm;
 
 import java.awt.Panel;
 import javax.swing.*;
+import org.omg.PortableInterceptor.NON_EXISTENT;
 
 
 /**
@@ -13,56 +14,82 @@ import javax.swing.*;
  * @author kexital
  */
 public class ContactCard extends JPanel {
-       // JPanel panel = new JPanel();
-        JLabel firstName = new JLabel("asd");
-        JLabel lastName = new JLabel("asd");
-        JLabel fatherName = new JLabel("asd");
-        JLabel tel = new JLabel("asd");
-        JLabel email = new JLabel("asd");
-        JLabel department = new JLabel("asd");
-        JLabel position = new JLabel("asd");
-        JLabel creator = new JLabel("asd");
+//  card fields labels:
+        JLabel firstNameLabel = new JLabel("Имя");
+        JLabel lastNameLabel = new JLabel("Фамилия");
+        JLabel fatherNameLabel = new JLabel("Отчество");
+        JLabel telLabel = new JLabel("тел.");
+        JLabel emailLabel = new JLabel("e-mail");
+        JLabel departmentLabel = new JLabel("Отдел");
+        JLabel positionLabel = new JLabel("Должность");
+        JLabel creatorLabel = new JLabel("Создатель");
        
-        
+//      contact's data. By default initialized with "No contacts" to provide 
+//      more user-friendly information to nonexperienced user in case if no firm
+//      contacts exist or card initialized with default
+        JLabel firstName = new JLabel();
+        JLabel lastName = new JLabel();
+        JLabel fatherName = new JLabel();
+        JLabel tel = new JLabel();
+        JLabel email = new JLabel();
+        JLabel department = new JLabel();
+        JLabel position = new JLabel();
+        JLabel creator = new JLabel();
+
+//  card buttons:        
         JButton editButton = new JButton("Edit");
         JButton delButton = new JButton("Delete");
         
-        JLabel contactfirstName = new JLabel("de");
-        JLabel contactlastName = new JLabel("de");
-        JLabel contactfatherName = new JLabel("de");
-        JLabel contacttel = new JLabel("de");
-        JLabel contactemail = new JLabel("de");
-        JLabel contactdepartment = new JLabel("de");
-        JLabel contactposition = new JLabel("de");
-        JLabel contactcreator = new JLabel("de");
         
-        JPanel panel = new JPanel();
-        GroupLayout layout = new GroupLayout(panel);
+        
         
         
         
     public ContactCard() {
-        super();
+        firstName.setText("-");
+        lastName.setText("-");
+        fatherName.setText("-");
+        tel.setText("-");
+        email.setText("-");
+        department.setText("-");
+        position.setText("-");
+        creator.setText("-");
+        
+        initComponents();
+        
+    }
+    
+    public ContactCard ( String firstName,
+                         String lastName,
+                         String fatherName,
+                         String tel,
+                         String email,
+                         String department,
+                         String position,
+                         String creator ) {
+       // super();
         initComponents();
     }
     
     private void initComponents() {
+        this.setBorder(BorderFactory.createEtchedBorder(WIDTH));
+        GroupLayout layout = new GroupLayout(this);
+        this.setLayout(layout);
         
-        panel.setLayout(layout); 
         layout.setAutoCreateContainerGaps(true);
         layout.setAutoCreateGaps(true);
         
         layout.setHorizontalGroup(
                 layout.createSequentialGroup()
                     .addGroup(layout.createParallelGroup()
-                        .addComponent(firstName)
-                        .addComponent(lastName)
-                        .addComponent(fatherName)
-                        .addComponent(tel)
-                        .addComponent(email)
-                        .addComponent(department)
-                        .addComponent(position)
-                        .addComponent(creator)
+                        .addComponent(firstNameLabel)
+                        .addComponent(lastNameLabel)
+                        .addComponent(fatherNameLabel)
+                        .addComponent(telLabel)
+                        .addComponent(emailLabel)
+                        .addComponent(departmentLabel)
+                        .addComponent(positionLabel)
+                        .addComponent(creatorLabel)
                         .addComponent(editButton)
                         .addComponent(delButton)
                     )
@@ -70,12 +97,12 @@ public class ContactCard extends JPanel {
                     .addGroup(layout.createParallelGroup()
                         .addComponent(firstName)
                         .addComponent(lastName)
-                        .addComponent(fatherName)
-                        .addComponent(contacttel)
-                        .addComponent(contactemail)
-                        .addComponent(contactdepartment)
-                        .addComponent(contactposition)
-                        .addComponent(contactcreator)
+                        .addComponent(fatherNameLabel)
+                        .addComponent(tel)
+                        .addComponent(email)
+                        .addComponent(department)
+                        .addComponent(position)
+                        .addComponent(creator)
                     )
                     
                 
@@ -85,26 +112,27 @@ public class ContactCard extends JPanel {
         layout.setVerticalGroup(
                 layout.createParallelGroup()
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(firstName)
-                        .addComponent(lastName)
-                        .addComponent(fatherName)
-                        .addComponent(tel)
-                        .addComponent(email)
-                        .addComponent(department)
-                        .addComponent(position)
-                        .addComponent(creator)
+                        .addComponent(firstNameLabel)
+                        .addComponent(lastNameLabel)
+                        .addComponent(fatherNameLabel)
+                        .addComponent(telLabel)
+                        .addComponent(emailLabel)
+                        .addComponent(departmentLabel)
+                        .addComponent(positionLabel)
+                        .addComponent(creatorLabel)
                         .addComponent(editButton)
                         .addComponent(delButton)
                     )
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(firstName)
                         .addComponent(lastName)
-                        .addComponent(fatherName)
-                        .addComponent(contacttel)
-                        .addComponent(contactemail)
-                        .addComponent(contactdepartment)
-                        .addComponent(contactposition)
-                        .addComponent(contactcreator)
+                        .addComponent(fatherNameLabel)
+                        .addComponent(tel)
+                        .addComponent(email)
+                        .addComponent(department)
+                        .addComponent(position)
+                        .addComponent(creator)
+                
                     )
                 );
         
@@ -114,4 +142,18 @@ public class ContactCard extends JPanel {
         
        
     }
+    
+    public void getEmptyCard() {
+        firstName.setText("-");
+        lastName.setText("-");
+        fatherName.setText("-");
+        tel.setText("-");
+        email.setText("-");
+        department.setText("-");
+        position.setText("-");
+        creator.setText("-");
+        
+    }
+    
+
 }
