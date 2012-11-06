@@ -31,6 +31,9 @@ public class AScrollList extends JScrollPane {
     public JButton unnecessaryDemoButton2= new JButton("lists1");
     public JButton unnecessaryDemoButton1= new JButton("lists2");
     private ContactCard contactCard = new ContactCard();
+    private ContactCard contactCard2 = new ContactCard();
+    private ContactCard contactCard3 = new ContactCard();
+    private ContactCard contactCard4 = new ContactCard();
     
     public JPanel panel;
     public GroupLayout layout;
@@ -39,6 +42,7 @@ public class AScrollList extends JScrollPane {
      */
     public AScrollList (){
         paint();
+        
     }
     public AScrollList(String firmContact[], int recPerFirm) {
         paint();
@@ -63,15 +67,22 @@ public class AScrollList extends JScrollPane {
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(contactCard)
+                .addComponent(contactCard2)
+                .addComponent(contactCard3)
+                .addComponent(contactCard4)
                 .addContainerGap(222, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(layout.createParallelGroup()
                 .addComponent(contactCard)
-                .addContainerGap(119, Short.MAX_VALUE))
+                .addComponent(contactCard2)
+                .addComponent(contactCard3)
+                .addComponent(contactCard4)
+               // .addContainerGap(119, Short.MAX_VALUE)
+                )
         );
-
+        contactCard4.setVisible(false);
         this.setViewportView(panel);
         this.setSize(new Dimension(800,800)); 
         }

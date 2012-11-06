@@ -34,11 +34,11 @@ public class DataChoser {
         JButton beginButton = new javax.swing.JButton();
         JButton endButton = new javax.swing.JButton();
         JButton okButton = new JButton();
-        
-    public DataChoser (){
+
+        public DataChoser (){
         createDataChoserWindow ();
     }
-    public void createDataChoserWindow () {
+        private void createDataChoserWindow () {
        //<editor-fold defaultstate="collapsed" desc="Shows DataChoserWindow">
        
         // setting a componenets
@@ -67,8 +67,11 @@ public class DataChoser {
     }
     
     
+    
+    
     public void appear(){
         f.setVisible(true);
+        LocDbProvider bb = new LocDbProvider();
     }
    
 }

@@ -7,6 +7,10 @@ package crm;
 import java.awt.Color;
 import java.awt.Toolkit;
 import java.awt.event.WindowEvent;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JFrame;
 
 /**
  *
@@ -17,12 +21,13 @@ public class LoginWindow extends javax.swing.JFrame {
     private String initialPass = "******";
     private String hardcodedLogin = "cs4";
     private String hardcodedPass = "09";
+    public static JFrame cRM_windowPointer;
 
     
     /**
      * Creates new form LoginWindow
      */
-    public LoginWindow() {
+    public LoginWindow() throws SQLException {
         initComponents();
         // TODO delete this as it is my test
         //<editor-fold defaultstate="collapsed" desc="  tgis as it is my test!!! ">
@@ -145,9 +150,8 @@ public class LoginWindow extends javax.swing.JFrame {
     private void OkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_OkActionPerformed
         if (    (jTextField1.getText().equals(hardcodedLogin))   &
                 (jPasswordField1.getText().equals(hardcodedPass))   ) {
-                new CRM_window(jTextField1.getText()).setVisible(true);
+                cRM_windowPointer = new CRM_window("Ololo");//(jTextField1.getText()).setVisible(true);
                 this.setVisible(false);
-                                
                 
             }
         else { 
@@ -220,9 +224,13 @@ public class LoginWindow extends javax.swing.JFrame {
 
             @Override
             public void run() { 
-                LoginWindow loginWindow = new LoginWindow();
-                loginWindow.setVisible(true);
-                loginWindow.Ok.grabFocus();
+                try {
+                    LoginWindow loginWindow = new LoginWindow();
+                    loginWindow.setVisible(true);
+                    loginWindow.Ok.grabFocus();
+                } catch (SQLException ex) {
+                    Logger.getLogger(LoginWindow.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
